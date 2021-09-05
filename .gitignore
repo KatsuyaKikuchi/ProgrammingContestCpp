@@ -1,2 +1,4 @@
 # Project exclude paths
 /cmake-build-debug/
+/FacebookHackerCup/2021/QualificationRound/Input/
+/FacebookHackerCup/2021/QualificationRound/Output/
