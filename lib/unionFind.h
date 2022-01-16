@@ -35,6 +35,23 @@ struct UnionFind {
         return x;
     }
 
+    vector<vector<int>> groups() {
+        vector<ll> g;
+        for (int i = 0; i < parent.size(); ++i) {
+            ll p = find(i);
+            g.push_back(p);
+        }
+        sort(g.begin(), g.end());
+        g.erase(unique(g.begin(), g.end()), g.end());
+
+        vector<vector<int>> ret(g.size());
+        for (int i = 0; i < parent.size(); ++i) {
+            auto index = lower_bound(g.begin(), g.end(), find(i)) - g.begin();
+            ret[index].push_back(i);
+        }
+        return ret;
+    }
+
     vector<int> parent;
     vector<int> rank;
 };
