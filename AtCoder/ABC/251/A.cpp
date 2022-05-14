@@ -15,5 +15,12 @@ const long double PI = 3.1415926535897932384626433832795028841971;
 int main() {
     cin.tie(0);
     ios::sync_with_stdio(false);
+    string S;
+    cin >> S;
+    string t = S;
+    while (t.size() != 6) {
+        t += S;
+    }
+    cout << t << endl;
     return 0;
 }
