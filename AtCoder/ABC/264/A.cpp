@@ -15,11 +15,12 @@ const long double PI = 3.1415926535897932384626433832795028841971;
 int main() {
     cin.tie(0);
     ios::sync_with_stdio(false);
-    ll N, M;
-    cin >> N >> M;
-    vector<pll> A(N);
-    REP(i, N) {
-        cin >> A[i].first >> A[i].second;
+    ll L, R;
+    cin >> L >> R;
+    string s = "atcoder";
+    FOR(i, R, L - 1) {
+        cout << s[i];
     }
+    cout << endl;
     return 0;
 }
