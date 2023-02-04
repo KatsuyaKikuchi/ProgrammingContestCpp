@@ -18,35 +18,25 @@ int main() {
     ll N;
     cin >> N;
     vector<ll> A(N);
+    vector<ll> C(1000005, 0);
     REP(i, N) {
         cin >> A[i];
+        C[A[i]]++;
     }
 
-    vector<ll> S(N + 5, 0);
-    {
-        ll s = 0;
-        ll index = 0;
-        REP(i, N + 1) {
-            S[i] = s;
-            s += A[index / 2];
-            index++;
-        }
-    }
-    vector<ll> L(N + 5, -INF);
-    L[0] = 0;
-    REP(i, N) {
-        for (ll j = i - 1; j >= 0; --j) {
-            ll d = (i - 1) - j;
-            L[i] = std::max(L[i], L[j] + S[d]);
-        }
-    }
+    sort(A.begin(), A.end());
+    vector<bool> D(1000005, false);
+    vector<bool> U(1000005, false);
 
     ll ans = 0;
     REP(i, N) {
-        FOR(j, N, i) {
-            ll d = i + N - 1 - j;
-            ll s = L[j - i] + S[d];
-            ans = std::max(ans, s);
+        if (!D[A[i]] && C[A[i]] == 1)
+            ans++;
+        if (U[A[i]])
+            continue;
+        U[A[i]] = true;
+        for (ll j = A[i]; j < D.size(); j += A[i]) {
+            D[j] = true;
         }
     }
     cout << ans << endl;
