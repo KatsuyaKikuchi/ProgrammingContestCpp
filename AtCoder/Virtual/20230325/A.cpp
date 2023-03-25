@@ -28,8 +28,8 @@ int main() {
             break;
         }
     }
-    for (ll i = N - 1; i > s; --i) {
-        string t;
+    for (ll i = N - 1; i >= s; --i) {
+        string t = "";
         REP(j, N) {
             t.push_back(S[j]);
         }
@@ -38,14 +38,12 @@ int main() {
             swap(t[s + x], t[i - x]);
             x++;
         }
-        //cout << t << " ";
         FOR(j, i + 1, s) {
             if (t[j] == 'p')
                 t[j] = 'd';
             else
                 t[j] = 'p';
         }
-        //cout << t << endl;
         T.push_back(t);
     }
     sort(T.begin(), T.end());
